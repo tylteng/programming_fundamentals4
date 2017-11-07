@@ -34,17 +34,18 @@ project = {
   ]
 }
 
-counter = project[:steps].length/project[:committee].length
-y = 0
+new_person = []
+project[:committee].each do |x|
+  new_person << x
+end
 
-project[:committee].each do |committe_member|
-  3.times do |task|
-    project[:steps][y][:person] = committe_member
-    y += 1
-    # puts project[:steps]
+i = 0
+project[:steps].each do |x|
+  x[:person] = new_person[i]
+  i += 1
+  if i == 3
+    i = 0
   end
 end
 
-project[:steps].each do |key, value|
-  p "#{key} #{value}"
-end
+puts project[:steps]
